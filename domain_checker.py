@@ -24,9 +24,3 @@ def domain_check(trusted, received, threshold):
                 risky.append([rec_domain, trust_domain, dist])
 
     return risky
-
-# def main():
-#     print(domain_check(['twltter.com', 'poopyscoop.com', 'yopmail.com'], ['twitter.com', 'facebook.com', 'google.com'], 3))
-
-
-# main()
