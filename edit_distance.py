@@ -1,6 +1,6 @@
 import unittest
 
-
+#Function to calculate Levenshtien edit distance between two strings. Uses Dynamic programming for O(m * n) runtime.
 def editDist_DP(string1, string2):
     #for each character in each each 'sub-word', maintain edit distance between the two subwords
         distances = [[0 for _ in range(len(string2)+1)] for _ in range(len(string1) + 1 )]
@@ -9,8 +9,6 @@ def editDist_DP(string1, string2):
             distances[0][i] = i
         for j in range(1, len(distances)):
             distances[j][0] = j
-        
-        #print(distances)
         
         for i in range(len(distances)):
             for j in range(len(distances[0])):
@@ -24,10 +22,9 @@ def editDist_DP(string1, string2):
                     if string1[i-1] != string2[j-1]:
                         subCost = 1
                         
-                    #either substitue, insert, or delete a char
+                    #either substitute, insert, or delete a char
                     distances[i][j] = min(distances[i][j-1] + 1, distances[i-1][j-1] + subCost, distances[i-1][j] + 1) 
-                    
-        #print(distances)
+
         return distances[-1][-1]
 
     

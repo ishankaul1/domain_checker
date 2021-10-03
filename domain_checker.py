@@ -9,17 +9,24 @@ from edit_distance import editDist_DP
 #Each bad domain will be returned in the format - [Received domain, similar domain, edit distance]
 #Note if a received domain matches several trustworthy domains, the list will include all domains it matched with
 def domain_check(trusted, received, threshold):
+    #ignore case
+    for i in range(len(trusted)):
+        trusted[i] = trusted[i].lower()
+    for i in range(len(received)):
+        received[i] = received[i].lower()
     risky = []
     for rec_domain in received:
         for trust_domain in trusted:
             dist = editDist_DP(rec_domain, trust_domain)
-            if dist < threshold:
+
+            #if it is lower than threshold and doesn't exactly match one of our trusted domains, we should assume this is a risky sender
+            if dist < threshold and dist != 0:
                 risky.append([rec_domain, trust_domain, dist])
 
     return risky
 
-def main():
-    print(domain_check(['twltter.com', 'poopyscoop.com', 'yopmail.com'], ['twitter.com', 'facebook.com', 'google.com'], 3))
+# def main():
+#     print(domain_check(['twltter.com', 'poopyscoop.com', 'yopmail.com'], ['twitter.com', 'facebook.com', 'google.com'], 3))
 
 
-main()
+# main()
