@@ -15,4 +15,5 @@ class TestEditDist(unittest.TestCase):
         self.assertEqual(editDist_DP('123x5', 'ppx'), 4)
         self.assertEqual(editDist_DP("zoologicoarchaeologist", "zoogeologist"), 10)
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

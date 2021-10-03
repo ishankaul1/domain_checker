@@ -22,5 +22,5 @@ class TestDomainChecker(unittest.TestCase):
         alert_thresh = 4
         self.assertEqual(domain_check(trusted=trusted_domains, received=received_domains, threshold=alert_thresh), [['gmop.com', 'gmail.com', 3]])
 
-
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
